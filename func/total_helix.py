@@ -10,7 +10,7 @@ def total_helix(helix,shablon):
     for i, row in shablon.iterrows():
         for y, r in helix.iterrows():
                 if str(row['код helix']) == str(r['код']):
-                    total_helix.loc[len(total_helix.index)]= [row['тест'],r['цена закупки'], r['цена хеликс'],r['цена алфа'],row['код helix'],row['код invitro'], row['код eml']]
+                    total_helix.loc[len(total_helix.index)]= [row['тест'],r['цена закупки helix'], r['цена helix'],r['цена альфа'],row['код helix'],row['код invitro'], row['код eml']]
                     break
         else:
             total_helix.loc[len(total_helix.index)] = [row['тест'],'1', '1','1',row['код helix'], row['код invitro'], row['код eml']]

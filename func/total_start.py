@@ -4,8 +4,8 @@ from func.total_data import total_data
 
 def total_start():
     from func.total_helix import total_helix
-    # from func.total_invitro import total_invitro
-    # from func.total import total
+    from func.total_invitro import total_invitro
+    from func.total import total
     # from data.helix.total_helix import total_helix_data
     # from data.invitro.total_invitro import total_invitro_data
 
@@ -17,13 +17,22 @@ def total_start():
     helix = pd.read_excel('./data/helix/data/helix.xlsx')
     helix = total_data.find_data("helix", helix, helix_alpha)
 
-    eml_apha = pd.read_excel('./data/eml/data/total_eml.xlsx')
+    eml_alpha = pd.read_excel('./data/eml/data/total_eml.xlsx')
     eml = pd.read_excel('./data/eml/data/eml.xlsx')
-    eml = total_data.find_data("eml", eml, eml_apha)
+    eml = total_data.find_data("eml", eml, eml_alpha)
     
     shablon = pd.read_excel('./data/shablon.xlsx')
     total_helix = total_helix(helix, shablon)
-    print(total_helix.columns.tolist())
+    total_invitro = total_invitro(invitro, total_helix)
+    total = total(eml, total_invitro)
+
+    print(total.columns.tolist())
+    current_date = datetime.now().date()
+    print(current_date)
+    print(total.head(20))
+    writer = pd.ExcelWriter(f"total_{current_date}.xlsx")
+    total.to_excel(writer)
+    writer.save()
 
 
     # invitro = pd.read_excel('./data/total invitro.xlsx')
