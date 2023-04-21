@@ -1,12 +1,9 @@
 import pandas as pd
 
 def total_helix(helix,shablon):
-    # helix = pd.read_excel('./data/helix/data/total_helix.xlsx')
-    # shablon = pd.read_excel('./data/helix/data/shablon.xlsx')
     print("total_helix")
     total_helix = pd.DataFrame(columns=['наименование','цена закупки helix' , 'стоимость helix','стоимость alpha','код helix','код invitro', 'код eml'])
     print(helix.columns.tolist())
-    # 'код','название', 'цена закупки','цена хеликс','цена алфа'
     for i, row in shablon.iterrows():
         for y, r in helix.iterrows():
                 if str(row['код helix']) == str(r['код']):
